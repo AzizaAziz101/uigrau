@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Willkommen">
+  <section class="hero">
+    <h1>Café Morgenrot</h1>
+    <p class="tagline">Kaffee. Kuchen. Stille. Mitten in Berlin.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="about">
+    <h2>Über uns</h2>
+    <p>
+      Das Café Morgenrot liegt im Herzen von Berlin-Mitte, nur wenige Schritte vom Hackeschen Markt entfernt.
+      Seit 2018 bieten wir unseren Gästen einen ruhigen Ort zum Verweilen – ob zum Frühstück, Mittagspause
+      oder für einen entspannten Nachmittag mit frischem Kuchen und gutem Kaffee.
+    </p>
+    <p>
+      Wir legen großen Wert auf Qualität: Unsere Bohnen beziehen wir von kleinen Röstereien aus der Region,
+      unser Gebäck wird täglich frisch in unserer eigenen kleinen Küche hergestellt. Vegetarische und
+      vegane Optionen sind bei uns selbstverständlich.
+    </p>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="highlights">
+    <h2>Was uns besonders macht</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Specialty Coffee</h3>
+        <p>Von Hand ausgewählte Arabica-Bohnen, zubereitet mit Leidenschaft – als Espresso, Filter oder Cold Brew.</p>
+      </div>
+      <div class="card">
+        <h3>Hausgemachter Kuchen</h3>
+        <p>Täglich frische Torten, Quiches und saisonale Backwaren – alles selbst gemacht, nichts von der Stange.</p>
+      </div>
+      <div class="card">
+        <h3>Ruhige Atmosphäre</h3>
+        <p>Kein Lärm, keine Hektik. Ein Ort zum Lesen, Arbeiten oder einfach Durchatmen im Trubel der Stadt.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="cta">
+    <h2>Kommen Sie vorbei</h2>
+    <p>
+      Wir freuen uns auf Sie! Schauen Sie sich unsere <a href="/speisekarte">Speisekarte</a> an oder
+      finden Sie alle Infos zu <a href="/kontakt">Öffnungszeiten und Anfahrt</a>.
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: 2rem 0 1.5rem;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+    color: #9ca3af;
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .card {
+    background-color: #27272f;
+    border: 1px solid #3d3d4a;
+    border-left: 3px solid #7c3aed;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  .cta p {
+    font-size: 1.05rem;
+  }
+</style>

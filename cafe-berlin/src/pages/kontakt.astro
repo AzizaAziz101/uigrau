@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const oeffnungszeiten = [
+  { tag: 'Montag', zeit: '08:00 – 18:00 Uhr' },
+  { tag: 'Dienstag', zeit: '08:00 – 18:00 Uhr' },
+  { tag: 'Mittwoch', zeit: '08:00 – 18:00 Uhr' },
+  { tag: 'Donnerstag', zeit: '08:00 – 20:00 Uhr' },
+  { tag: 'Freitag', zeit: '08:00 – 20:00 Uhr' },
+  { tag: 'Samstag', zeit: '09:00 – 20:00 Uhr' },
+  { tag: 'Sonntag', zeit: '10:00 – 17:00 Uhr' },
+];
+
+const heute = new Date().toLocaleDateString('de-DE', { weekday: 'long' });
+---
+
+<Layout title="Kontakt & Öffnungszeiten" description="Öffnungszeiten, Adresse und Kontakt des Café Morgenrot in Berlin-Mitte">
+  <h1>Kontakt & Öffnungszeiten</h1>
+
+  <hr class="divider" />
+
+  <section>
+    <h2>Öffnungszeiten</h2>
+    <table class="hours-table">
+      <tbody>
+        {oeffnungszeiten.map(({ tag, zeit }) => (
+          <tr class:list={[{ today: tag === heute }]}>
+            <td class="day">{tag}</td>
+            <td class="time">{zeit}</td>
+            {tag === heute && <td class="badge">Heute</td>}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="note">An Feiertagen gelten abweichende Öffnungszeiten. Bitte informieren Sie sich vorab.</p>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="contact-grid">
+    <div>
+      <h2>Adresse</h2>
+      <address>
+        <p>Café Morgenrot</p>
+        <p>Rosenthaler Straße 42</p>
+        <p>10178 Berlin-Mitte</p>
+      </address>
+      <p class="directions">
+        Nächste U-Bahn: <strong>Weinmeisterstraße (U8)</strong><br />
+        Nächste S-Bahn: <strong>Hackescher Markt (S3, S5, S7, S9)</strong><br />
+        Bus: <strong>M1, 142, 200</strong> Haltestelle Rosa-Luxemburg-Platz
+      </p>
+    </div>
+
+    <div>
+      <h2>Kontakt</h2>
+      <dl class="contact-list">
+        <dt>Telefon</dt>
+        <dd>+49 30 123 456 78</dd>
+        <dt>E-Mail</dt>
+        <dd>hallo@cafe-morgenrot.de</dd>
+        <dt>Instagram</dt>
+        <dd>@cafe_morgenrot_berlin</dd>
+      </dl>
+
+      <h2>Reservierungen</h2>
+      <p>
+        Für Gruppen ab 6 Personen bitten wir um telefonische Voranmeldung.
+        Wir halten gerne einen Tisch für Sie bereit.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section>
+    <h2>Anfahrt & Parken</h2>
+    <p>
+      Das Café befindet sich im Herzen von Berlin-Mitte, ideal erreichbar mit öffentlichen Verkehrsmitteln.
+      Wir empfehlen die Anreise mit Bus, U-Bahn oder Fahrrad. In der näheren Umgebung gibt es
+      mehrere Fahrradabstellplätze direkt vor dem Eingang.
+    </p>
+    <p>
+      Für Autofahrer stehen in der Rosenthaler Straße und den umliegenden Nebenstraßen
+      gebührenpflichtige Parkplätze zur Verfügung (Zone A, Parkdauer max. 2 Stunden).
+      Das nächste Parkhaus befindet sich in der Münzstraße (ca. 200 m).
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid #2d2d35;
+  }
+
+  .hours-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .hours-table tr.today {
+    background-color: #2d1f4a;
+  }
+
+  .day {
+    padding: 0.65rem 0.75rem 0.65rem 0;
+    color: #d1d5db;
+    font-weight: 500;
+    width: 140px;
+  }
+
+  .time {
+    padding: 0.65rem 0.75rem;
+    color: #9ca3af;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .badge {
+    padding: 0.65rem 0;
+    color: #a78bfa;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .note {
+    font-size: 0.85rem;
+    color: #6b7280;
+    font-style: italic;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+
+  address {
+    font-style: normal;
+  }
+
+  address p {
+    margin-bottom: 0.25rem;
+    color: #e5e7eb;
+    font-weight: 500;
+  }
+
+  .directions {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    line-height: 1.9;
+  }
+
+  .directions strong {
+    color: #c4b5fd;
+  }
+
+  dl.contact-list {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.4rem 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  dt {
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-top: 0.1rem;
+  }
+
+  dd {
+    color: #e5e7eb;
+    font-size: 0.95rem;
+  }
+</style>

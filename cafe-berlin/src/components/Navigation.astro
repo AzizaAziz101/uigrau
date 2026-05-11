@@ -1,0 +1,86 @@
+---
+const navLinks = [
+  { href: '/', label: 'Startseite' },
+  { href: '/speisekarte', label: 'Speisekarte' },
+  { href: '/kontakt', label: 'Kontakt & Öffnungszeiten' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Café Morgenrot</a>
+    <ul class="nav-links">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class:list={['nav-link', { active: currentPath === link.href }]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  nav {
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #7c3aed;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #a78bfa;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+
+  .nav-logo:hover {
+    color: #c4b5fd;
+  }
+
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: #a78bfa;
+    border-bottom-color: #7c3aed;
+  }
+
+  .nav-link.active {
+    color: #a78bfa;
+    border-bottom-color: #7c3aed;
+  }
+</style>

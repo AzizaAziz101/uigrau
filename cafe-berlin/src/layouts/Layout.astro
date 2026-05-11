@@ -1,0 +1,109 @@
+---
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Café Morgenrot – Ihr gemütliches Café in Berlin-Mitte' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | Café Morgenrot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <Navigation />
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p>© 2026 Café Morgenrot · Berlin-Mitte · Alle Rechte vorbehalten</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #1f1f23;
+    color: #e5e7eb;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #a78bfa;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #c4b5fd;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ddd6fe;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    line-height: 1.7;
+    color: #d1d5db;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: #a78bfa;
+  }
+
+  footer {
+    background-color: #1a1a1a;
+    border-top: 1px solid #2d2d35;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #2d2d35;
+    margin: 2rem 0;
+  }
+</style>

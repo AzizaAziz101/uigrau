@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const menu = {
+  kaffee: [
+    { name: 'Espresso', preis: '2,50 €', beschreibung: 'Doppelte Arabica-Bohnen, intensiv und aromatisch' },
+    { name: 'Cappuccino', preis: '3,80 €', beschreibung: 'Espresso mit aufgeschäumter Vollmilch' },
+    { name: 'Flat White', preis: '4,00 €', beschreibung: 'Doppelter Ristretto mit feinem Milchschaum' },
+    { name: 'Filter Kaffee', preis: '3,20 €', beschreibung: 'Täglich wechselnde Einzelorigin-Bohne, Chemex' },
+    { name: 'Cold Brew', preis: '4,50 €', beschreibung: '18 Stunden kalt aufgebrüht, sanft und fruchtig' },
+    { name: 'Matcha Latte', preis: '4,20 €', beschreibung: 'Japanischer Zeremonienmatcha mit Hafermilch' },
+  ],
+  kuchen: [
+    { name: 'Zitronentarte', preis: '4,50 €', beschreibung: 'Mürbeteig mit frischer Zitronencreme, vegan möglich' },
+    { name: 'Schokokuchen', preis: '4,80 €', beschreibung: 'Saftiger Schokoladenkuchen mit Ganache' },
+    { name: 'Apfel-Zimt-Strudel', preis: '4,20 €', beschreibung: 'Hausgemacht, täglich frisch, mit Vanillecreme' },
+    { name: 'Cheesecake New York Style', preis: '5,00 €', beschreibung: 'Cremig, mit Heidelbeerkompott' },
+    { name: 'Haferschnitte (vegan)', preis: '3,50 €', beschreibung: 'Mit Datteln, Nüssen und dunkler Schokolade' },
+  ],
+  fruehstueck: [
+    { name: 'Avocado Toast', preis: '9,50 €', beschreibung: 'Sauerteigbrot, Avocado, Chili, Limette, Rucola' },
+    { name: 'Granola Bowl', preis: '7,80 €', beschreibung: 'Hausgemachtes Granola, Joghurt, saisonale Früchte' },
+    { name: 'Frühstücksbrett', preis: '12,00 €', beschreibung: 'Brot, Aufschnitt, Käse, Ei, Marmelade, Butter' },
+    { name: 'Porridge', preis: '6,50 €', beschreibung: 'Hafer mit Kokosmilch, Beeren, Honig (vegan möglich)' },
+    { name: 'Quiche des Tages', preis: '8,00 €', beschreibung: 'Täglich wechselnd, bitte nach aktueller Verfügbarkeit fragen' },
+  ],
+  kalt: [
+    { name: 'Frisch gepresster OJ', preis: '4,00 €', beschreibung: 'Drei Orangen, frisch gepresst' },
+    { name: 'Hauslimonade', preis: '4,50 €', beschreibung: 'Zitrone, Gurke, Minze oder Ingwer – Wahl des Tages' },
+    { name: 'Sprudel / Still', preis: '2,80 €', beschreibung: '0,33 l, regional' },
+    { name: 'Club Mate', preis: '3,50 €', beschreibung: 'Das Berliner Original' },
+  ],
+};
+---
+
+<Layout title="Speisekarte" description="Die Speisekarte des Café Morgenrot in Berlin-Mitte">
+  <h1>Speisekarte</h1>
+  <p class="intro">Alle Preise inkl. MwSt. Änderungen vorbehalten. Kennzeichnungspflichtige Allergene auf Anfrage.</p>
+
+  <hr class="divider" />
+
+  <section>
+    <h2>Kaffee & Heißgetränke</h2>
+    <ul class="menu-list">
+      {menu.kaffee.map(item => (
+        <li class="menu-item">
+          <div class="item-header">
+            <span class="item-name">{item.name}</span>
+            <span class="item-price">{item.preis}</span>
+          </div>
+          <p class="item-desc">{item.beschreibung}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <section>
+    <h2>Kuchen & Gebäck</h2>
+    <ul class="menu-list">
+      {menu.kuchen.map(item => (
+        <li class="menu-item">
+          <div class="item-header">
+            <span class="item-name">{item.name}</span>
+            <span class="item-price">{item.preis}</span>
+          </div>
+          <p class="item-desc">{item.beschreibung}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <section>
+    <h2>Frühstück (bis 13 Uhr)</h2>
+    <ul class="menu-list">
+      {menu.fruehstueck.map(item => (
+        <li class="menu-item">
+          <div class="item-header">
+            <span class="item-name">{item.name}</span>
+            <span class="item-price">{item.preis}</span>
+          </div>
+          <p class="item-desc">{item.beschreibung}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <section>
+    <h2>Kaltgetränke</h2>
+    <ul class="menu-list">
+      {menu.kalt.map(item => (
+        <li class="menu-item">
+          <div class="item-header">
+            <span class="item-name">{item.name}</span>
+            <span class="item-price">{item.preis}</span>
+          </div>
+          <p class="item-desc">{item.beschreibung}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Layout>
+
+<style>
+  .intro {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+  }
+
+  .menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .menu-item {
+    background-color: #27272f;
+    border: 1px solid #3d3d4a;
+    border-radius: 6px;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.25rem;
+    gap: 1rem;
+  }
+
+  .item-name {
+    font-weight: 600;
+    color: #e5e7eb;
+    font-size: 1rem;
+  }
+
+  .item-price {
+    font-weight: 600;
+    color: #a78bfa;
+    white-space: nowrap;
+    font-size: 0.95rem;
+  }
+
+  .item-desc {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+</style>
